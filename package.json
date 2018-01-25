@@ -14,7 +14,8 @@
     "minimist": "^0.0.8",
     "lively.modules": "^0.8.18",
     "lively.storage": "*",
-    "systemjs": "^0.19"
+    "systemjs": "^0.19",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.16.0",
