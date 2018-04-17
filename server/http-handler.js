@@ -127,8 +127,19 @@ let routes = [
         return fail(`User change failure: `, err.message, true);
       }
       user.storeIntoDB(userDB);
-      
+
       success({status: 'modification successful', token: user.token});
+    }
+  },
+
+  {
+    path: "/clear-cache",
+    methods: ["POST"],
+    handle: async (server, req, res, next, success, fail) => {
+      let userDB = UserDB.ensureDB(server.options.userdb, {});
+      userDB.clearCache();
+
+      success({status: 'cache cleared'});
     }
   }
 

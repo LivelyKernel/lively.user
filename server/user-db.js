@@ -49,7 +49,11 @@ export default class UserDB {
     this.userCache.set(user.name, user);
     return user;
   }
-  
+
+  clearCache() {
+    this.userCache = new Map();
+  }
+
   destroy() {
     this.constructor.cached.delete(this.path);
     return this.db.destroy();
