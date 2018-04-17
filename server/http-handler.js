@@ -121,10 +121,14 @@ let routes = [
           user = await userDB.getUserNamed(decoded.name);
       if (!user) return fail(`no user ${data.name}`);
 
-      try { user.modify(data.changes); }
-      catch (err) { return fail(`User change failure: `, err.message, true); }
-
-      success({status: "modification successful", token: user.token});
+      try {
+        user.modify(data.changes);
+      } catch (err) {
+        return fail(`User change failure: `, err.message, true);
+      }
+      user.storeIntoDB(userDB);
+      
+      success({status: 'modification successful', token: user.token});
     }
   }
 
